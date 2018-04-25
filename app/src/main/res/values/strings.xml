@@ -1,4 +1,4 @@
 <resources>
     <string name="app_name">Jokes</string>
-    <string name="please_waiting">please waiting ...</string>
+    <string name="please_waiting">please wait ...</string>
 </resources>
