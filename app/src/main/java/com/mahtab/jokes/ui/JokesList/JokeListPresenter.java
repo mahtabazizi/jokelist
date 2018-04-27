@@ -1,8 +1,11 @@
 package com.mahtab.jokes.ui.JokesList;
 
+import com.mahtab.jokes.database.EntityValue;
 import com.mahtab.jokes.models.JokeListResponse;
 import com.mahtab.jokes.network.Service;
+import java.util.List;
 
+import io.reactivex.Flowable;
 import rx.Subscription;
 import rx.subscriptions.CompositeSubscription;
 
@@ -17,6 +20,7 @@ public class JokeListPresenter {
         this.view = view;
         this.subscriptions = new CompositeSubscription();
     }
+
 
     public void getJokeList() {
         view.showWait();

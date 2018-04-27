@@ -12,6 +12,7 @@ import com.mahtab.jokes.R;
 import com.mahtab.jokes.base.BaseApp;
 import com.mahtab.jokes.models.JokeListResponse;
 import com.mahtab.jokes.network.Service;
+import com.mahtab.jokes.utils.ConnectionUtil;
 
 import javax.inject.Inject;
 
@@ -35,9 +36,19 @@ public class JokesListActivity extends BaseApp implements JokesListView {
         getDeps().inject(this);
         setContentView(R.layout.activity_jokes_list);
         ButterKnife.bind(this);
+        checkNetworkConnection();
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         presenter = new JokeListPresenter(service, this);
         presenter.getJokeList();
+    }
+
+    private void checkNetworkConnection() {
+        ConnectionUtil connect=new ConnectionUtil(getApplicationContext());
+        if(!connect.isConnected()){
+            Toast.makeText(this, "Please Check Network Connection.", Toast.LENGTH_SHORT).show();
+        }else {
+            Toast.makeText(this, "network is on", Toast.LENGTH_SHORT).show();
+        }
     }
 
     @Override

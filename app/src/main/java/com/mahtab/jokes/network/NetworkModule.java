@@ -1,6 +1,7 @@
 package com.mahtab.jokes.network;
 
 import com.mahtab.jokes.BuildConfig;
+import com.mahtab.jokes.repository.LocalRepositoryImpl;
 
 import java.io.File;
 import java.io.IOException;
@@ -73,12 +74,19 @@ public class NetworkModule {
             Retrofit retrofit) {
         return retrofit.create(NetworkService.class);
     }
-    @Provides
+ /*   @Provides
     @Singleton
     @SuppressWarnings("unused")
     public Service providesService(
-            NetworkService networkService) {
-        return new Service(networkService);
-    }
+            NetworkService networkService,LocalRepository localRepository) {
+        return new Service(networkService,localRepository);
+    }*/
+ @Provides
+ @Singleton
+ @SuppressWarnings("unused")
+ public Service providesService(
+         NetworkService networkService) {
+     return new Service(networkService);
+ }
 
 }
